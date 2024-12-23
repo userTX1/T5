@@ -1,0 +1,164 @@
+
+
+  sslciphercheck
+
+  Copyright (c) 2012 woanware
+  Developed by Mark Woan (markwoan[at]gmail.com)
+
+  ---------------------------------------------------------------------------
+
+  A tool for checking SSL ciphers...
+  
+  
+  Change Log
+  ----------
+  
+  v1.4.2
+  ------
+  - Modified the certificate retrieval to use both SSLv3 and TLS, since .Net 
+    defaults to TLS and some HTTPS servers have support for TLS turned off.
+
+  v1.4.1
+  ------
+  - Modified the HTTP response parsing to improve the capture of individual 
+    aspects of the response e.g. Location header, HTTP headers and HTML response
+
+  v1.4.0
+  ------
+  - Added a check for SSL renegotiation
+  - Added extra validation to ensure a connection is successful before continuing
+  
+  v1.3.1
+  ------
+  - Fixed an issue when the HTML response contains only \n as new line characters
+    rather than \r\n
+  - Added a check to ensure that the key size of the certificate is >= 1024. Thanks
+    JonR
+  
+  v1.3.0
+  ------
+  - Increased the ciphers supported
+  - Improved speed
+  - Added coloured console output :-)
+  - Added checks for certificate signature algorithms issues. This check works across the entire cert chain
+  
+  v1.2.4
+  ------
+  - Minor update to cope with an edge where an SSL connection can be made but the
+    app cannot send a HTTP request, so now the child process has a timeout, which 
+    defaults to 5000ms
+  
+  v1.2.3
+  ------
+  - Updated to check and display any certificate errors, such as name not matching,
+    certificate chain issues etc
+  - Updated to openssl v1.0.0
+  - Updated to .Net v4
+  
+  v1.2.2
+  ------
+  - Updated to show the location header if a valid HTTP response is received
+  
+  v1.2.1
+  ------
+  - Fixed the show only supported ciphers option
+
+  v1.2.0
+  ------
+  - Updated openssl to v0.9.8l (5 Nov 2009)
+  - Rewritten the protocol/algorithm support code, so that only the supported 
+    algorithms for each of the three protocols is now checked
+  - Added supported for specific URL checking (-u)
+  - Added the ability to perform a HTTP resquest so that actual support for a
+    specific algorithm/protocol combination is valid
+  - Added the ability to output each valid HTTP response to an individual 
+    file (-t)
+  - Modified the HTTP response file writing to separate the HTTP headers from 
+    the HTML response for better display
+  - Modified the output display to include the first line from the HTTP 
+    response e.g. HTTP/1.1 301 Moved Permanently
+  - Added the ability to perform a keyword(s) match on the HTTP response (-m)
+  
+  v1.1.3
+  ------
+  - Updated the "Usage" display to show that you need a file name argument to 
+    the -c parameter. Thanks Fully
+  - Modified the CSV output to not pad the key size data. Thanks Fully
+  
+  v1.1.2
+  ------
+  - Updated the openssl version to 0.9.8j, which solves the "WARNING: can't open
+    config file: /usr/local/ssl/openssl.cnf" error message that was being displayed.
+  - Added the ability to output to a CSV file (-c). Thanks Fully
+  - Modified to include CSV header line (-i)
+  
+  v1.1.1
+  ------
+  - Modified to exit if the certificate details cannot be retrieved since it 
+    suggests that the service is not SSL enabled. This change comes about due 
+    to the openssl client hanging when attempting to connect to a non-SSL 
+    service
+  - Removed the option to suppress the certificate details
+  - Updated openssl to v0.9.8i
+  
+  v1.1.0
+  ------
+  - Rewritten the entire SSL certificate retrieval using entirely native .Net
+    code rather than the Mentalis.org security library
+  - The binary now targets Microsoft .Net v3.5
+  
+  v1.0.7
+  ------
+  - Modified the retrieve the cipher strength when it is loading, so the ciphers
+    are now tested in strength order e.g. largest key size to smallest. Thanks
+    Aaron Spuler for the suggestion
+  
+  v1.0.6
+  ------
+  - Fixed another bug in the function that retrieves the SSL certificate 
+    details. The bug would occur if it tried to resolve a domain that doesn't 
+    exist, so should actually effect the results. Cheers JJ
+  
+  v1.0.5
+  ------
+  - Fixed a bug where sometimes a DNS lookup failed and caused the certificate
+    retrieval to fail, which prevented the rest of the process continuing. 
+    Thanks AlM
+  - Added extra validation to prevent erronous text from the openssl binary
+  - Upgraded the openssl binaries to v0.9.8g
+  
+  v1.0.4
+  ------
+  - Fixed issue that occasionally caused a hang with certain servers
+  - Removed some erronous debug messages
+  
+  v1.0.3
+  ------
+  - Modified the code that retrieves the supported OpenSSL ciphers, to prevent
+    duplicate cipher checks
+  - Modified the cipher check to ensure that the process exits cleanly
+  
+  v1.0.2
+  ------
+  - Added missing libeay32.dll to archive as well. skillz
+  - Added code to extract the SSL certificate details including Server Gated 
+    Cryptography (SGC) info
+  
+  v1.0.1
+  ------
+  - Added missing ssleay32.dll to archive
+  
+  v1.0.0
+  ------
+  - Initial Public Release
+
+
+  ---------------------------------------------------------------------------
+
+  woanware
+  http://www.woanware.co.uk/
+
+  
+
+
+
