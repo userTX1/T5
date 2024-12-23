@@ -1,0 +1,6 @@
+0￥username=test&password={exp}
+1￥?age=123&name={exp}
+2￥Method={exp}
+3￥username=test&password={exp}
+4￥?Method={exp}
+5￥?Method={exp}
